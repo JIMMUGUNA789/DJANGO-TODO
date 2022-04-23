@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+    <p>Hello {{request.user.username}} </p>
+    {% else %}
+    <p>Hello anonymous user</p>
+    {% endif %}
+
+    <p>{{todo.title}} is due on {{todo.due_date}}.</p>
+    <a href="update/{{todo.id}}/">Edit</a>
+    <a href="delete/{{todo.id}}/"><button>Delete</button></a>
+
+    
+
+    
+    
+{% endblock %}

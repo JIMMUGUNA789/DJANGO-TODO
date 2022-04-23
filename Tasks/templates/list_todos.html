@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+    <p>Hello {{request.user.username}} </p>
+    {% else %}
+    <p>Hello anonymous user</p>
+    {% endif %}
+    <h3>My Todos</h3>
+
+    <a href="create/" class="btn btn-primary">Create</a>
+
+
+
+    {% for todo in todos %}
+    <div class="card mt-2" style="width: 20rem;">
+    <div class="card-body">
+        <h5 class="card-title"><a href="{{todo.id}}/">{{todo.title}}</a> </h5>
+        <p class="card-text">is due on {{todo.due_date}}</p>
+        <div class="position-relative">
+            <a href="update/{{todo.id}}/" class="btn btn-primary ">Edit</a>
+            <a href="delete/{{todo.id}}/" class="btn btn-danger  ">Delete</a>
+        </div>
+      </div>
+    </div>
+
+    
+    
+    
+    {% endfor %}
+    
+
+{% endblock %}
+
+    
+    

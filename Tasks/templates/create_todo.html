@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<p>Hello {{request.user.username}} </p>
+{% else %}
+<p>Hello anonymous user</p>
+{% endif %}
+
+
+<a href="/" class="btn btn-primary">Back</a>
+
+    <div class="card mt-2" style="width: 20rem;">
+        <div class="card-body text-center">
+            <h5 class="card-title position-relative">Create Todo</h5>
+            <!-- <p class="card-text">is due on {{todo.due_date}}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+{% endblock%}
